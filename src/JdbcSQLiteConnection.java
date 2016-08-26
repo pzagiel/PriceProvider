@@ -1,6 +1,10 @@
 import org.sqlite.SQLiteConfig;
 
 import java.sql.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 /**
  * This program demonstrates making JDBC connection to a SQLite database.
@@ -17,8 +21,9 @@ public class JdbcSQLiteConnection {
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);
             Class.forName("org.sqlite.JDBC");
-            String dbURL = "jdbc:sqlite:Prices/FinancialWorld.db";
-            conn = DriverManager.getConnection(dbURL,config.toProperties());
+            String dbURL = "jdbc:sqlite:"+getDatabaseFileNameFromConfig();
+            // Error checking is not good if didn't find database. Should be handle rapidely
+            conn = DriverManager.getConnection(dbURL, config.toProperties());
         } catch (SQLException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (ClassNotFoundException e) {
@@ -39,10 +44,44 @@ public class JdbcSQLiteConnection {
 
     }
 
+    public static String getDatabaseFileNameFromConfig() {
+        Properties prop = new Properties();
+        InputStream input = null;
+
+        try {
+
+            input = new FileInputStream("classes/config.properties");
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            // System.out.println(prop.getProperty("database"));
+            //System.out.println(prop.getProperty("dbuser"));
+            //System.out.println(prop.getProperty("dbpassword"));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+        return prop.getProperty("database");
+    }
+
     public static void main(String[] args) {
+
+        getDatabaseFileNameFromConfig();
         try {
             Class.forName("org.sqlite.JDBC");
-            String dbURL = "jdbc:sqlite:Prices/FinancialWorld.db";
+            String dbURL = "jdbc:sqlite:" + getDatabaseFileNameFromConfig();
             Connection conn = DriverManager.getConnection(dbURL);
             if (conn != null) {
                 System.out.println("Connected to the database");
