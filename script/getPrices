@@ -1,5 +1,5 @@
-#export CLASSPATH="/Users/pzagiel/Dropbox/Finance Toolkit/Hello/classes:/Users/pzagiel/Dropbox/Finance Toolkit/Hello/lib/jsoup-1.8.1.jar"
-cd "/Users/pzagiel/Dropbox/Finance Toolkit/Hello"
+appHome="/Users/pzagiel/Dropbox/Finance\ Toolkit/Hello/"
+eval cd $appHome
 export CLASSPATH="classes:lib/jsoup-1.8.3.jar:lib/sqlite-jdbc-3.7.2.jar:lib/json-simple-1.1.1.jar"
 date
 java BloombergProvider
@@ -7,7 +7,7 @@ java MorningstarProvider
 java GoogleFinanceProvider
 java FrankfurtBoerseProviderNew
 java EuronextProvider
-cp "/Users/pzagiel/Dropbox/Finance Toolkit/Hello/Prices/FinancialWorld.db" /Volumes/KINGSTON/Backup/FinancialWorld.db.$(date "+%m-%d-%y%_%H%M%S")
-"/Users/pzagiel/Dropbox/Finance Toolkit/Hello/script/getAllPrices" >/Volumes/KINGSTON/Backup/Prices.bck.csv.$(date "+%m-%d-%y%_%H%M%S")
+eval cp $appHome"/database/FinancialWorld.db" /Volumes/KINGSTON/Backup/FinancialWorld.db.$(date "+%m-%d-%y%_%H%M%S")
+eval $appHome"/script/getAllPrices" >/Volumes/KINGSTON/Backup/Prices.bck.csv.$(date "+%m-%d-%y%_%H%M%S")
 date
 
