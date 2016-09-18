@@ -43,6 +43,7 @@ public class BloombergProvider {
         bloombergProvider.getLastPrice("FR0000121667", "EI:FP");  //Essilor
         bloombergProvider.getLastPrice("GB00B00FHZ82", "GBS:LN");  //Gold Bullion
         bloombergProvider.getLastPrice("NL0000009538", "PHIA:NA");  //Philips Amsterdam
+        bloombergProvider.getLastPrice("CL1COM", "CL1:COM");  //WTI Crude
     }
 
 
@@ -61,8 +62,72 @@ public class BloombergProvider {
         return null;
     }
 
+    public void getPrices(String isin, String ticker) {
+        // Possible to use 1_WEEK, 1_MONTH, 1_YEAR,5_YEAR,MAX default is 1_WEEK
+        String baseUrl = "http://www.bloomberg.com/markets/api/bulk-time-series/price/" + ticker + "?timeFrame=1_YEAR";
+        Document doc = null;
+        Elements priceElt = null;
+        try {
+            String ua = "Mozilla/5.0 (Macintosh)";
+            doc = Jsoup.connect(baseUrl).ignoreContentType(true).userAgent(ua).get();
+            // System.out.println(doc.text());
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+        Price priceValue = new Price();
+        JSONParser parser = new JSONParser();
+        Object obj = null;
+        try {
+            obj = parser.parse(doc.body().text());
+            ArrayList prices = (ArrayList) obj;
+            JSONObject jsonPrice = (JSONObject) prices.get(0);
+
+            ArrayList prices1 = (ArrayList) jsonPrice.get("price");
+            // Loop on prices
+
+            for (int i = 0; i < prices1.size(); i++) {
+                priceValue.instrumentCode = isin;
+                priceValue.provider = "Bloomberg";
+                JSONObject jsonPrice1 = (JSONObject) prices1.get(i);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = null;
+                try {
+                    date = sdf.parse((String) jsonPrice1.get("date"));
+                } catch (ParseException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+                // Very good page on type class testing
+
+                priceValue.date = sdf1.format(date);
+                //priceValue.date = (String) jsonPrice1.get("date)");
+                try {
+                    Double priceObj = (Double) jsonPrice1.get("value");
+                    priceValue.priceValue = priceObj.doubleValue();
+                }
+
+                catch (ClassCastException e) {
+                    // Could be the cast if number without decimal than JSON create e Long object in place of Double
+                    Long priceObj = (Long) jsonPrice1.get("value");
+                    priceValue.priceValue = priceObj.doubleValue();
+                }
+                if (priceValue != null)
+                    System.out.println("Store Price From Bloomberg " + priceValue.instrumentCode + " " + priceValue.date + " " + priceValue.priceValue);
+                new StorePrice().storeInSqlite(priceValue);
+
+            }
+
+        } catch (org.json.simple.parser.ParseException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     public void getLastPrice(String isin, String ticker) {
+        // Possible to use 1_WEEK, 1_MONTH, 1_YEAR,5_YEAR,MAX default is 1_WEEK
         String baseUrl = "http://www.bloomberg.com/markets/api/bulk-time-series/price/" + ticker + "?timeFrame=1_MONTH";
         Document doc = null;
         Elements priceElt = null;
