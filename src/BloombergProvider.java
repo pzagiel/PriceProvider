@@ -157,19 +157,9 @@ public class BloombergProvider {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
             SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-            // Very good page on type class testing
-
             priceValue.date = sdf1.format(date);
-            try {
-                Double priceObj = (Double) jsonPrice.get("lastPrice");
-                priceValue.priceValue = priceObj.doubleValue();
-            }
-            catch (ClassCastException e) {
-                // Could be the cast if number without decimal than JSON create e Long object in place of Double
-                Long priceObj = (Long) jsonPrice.get("lastPrice");
-                priceValue.priceValue = priceObj.doubleValue();
-            }
-
+            Number priceObj = (Number) jsonPrice.get("lastPrice");
+            priceValue.priceValue = priceObj.doubleValue();
 
         } catch (org.json.simple.parser.ParseException e) {
             e.printStackTrace();
