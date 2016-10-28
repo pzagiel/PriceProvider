@@ -25,6 +25,7 @@ public class BloombergProvider {
 
     public static void main(String[] args) {
         BloombergProvider bloombergProvider = new BloombergProvider();
+        bloombergProvider.getLastPrice("US0378331005", "AAPL:US");  //Apple Inc
         bloombergProvider.getLastPrice("GB00B0CTWC01", "OLBP:LN");  // ETFS WTI Crude Oil USD
         bloombergProvider.getLastPrice("GB00B15KXV33", "CRUD:LN");  // Brent ETFS Tracker in GBX
         bloombergProvider.getLastPrice("NL0011821202", "INGA:NA");  // ING
@@ -34,7 +35,7 @@ public class BloombergProvider {
         bloombergProvider.getLastPrice("IE00B0M62T89", "IQQV:GR");  //iShares EURO Total Market Value Large UCITS ETF 
         bloombergProvider.getLastPrice("CA3518581051", "FNV:US");  //FRANCO-NEVADA CORP (USD)
         bloombergProvider.getLastPrice("JE00B2QKY057", "SHP:LN");  //SHirpe PLC
-        bloombergProvider.getLastPrice("US0378331005", "AAPL:US");  //Apple Inc
+
         bloombergProvider.getLastPrice("FR0000051732", "ATO:FP");  //ATOS
         bloombergProvider.getLastPrice("FR0011253624", "SOGVALR:FP");  //R Valor
         bloombergProvider.getLastPrice("US5007541064", "KHC:US");  //Kraft
@@ -133,7 +134,7 @@ public class BloombergProvider {
         Elements priceElt = null;
         try {
             String ua = "Mozilla/5.0 (Macintosh)";
-            doc = Jsoup.connect(baseUrl).ignoreContentType(true).userAgent(ua).get();
+            doc = Jsoup.connect(baseUrl).validateTLSCertificates(false).ignoreContentType(true).userAgent(ua).get();
             // System.out.println(doc.text());
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
