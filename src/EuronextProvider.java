@@ -12,7 +12,9 @@ import java.io.*;
 import java.net.URL;
 import java.text.DecimalFormatSymbols;
 import java.text.DecimalFormat;
+import java.security.Security;
 
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,10 +49,8 @@ public class EuronextProvider {
     }
 
 
-
-
-
     public void getLastPrice(String isinCode, String market) {
+        //Security.addProvider(new BouncyCastleProvider());
         String baseUrl = "https://www.euronext.com/sites/www.euronext.com/modules/common/common_listings/custom/nyx_eu_listings/nyx_eu_listings_price_chart/pricechart/pricechart.php?q=historical_data&adjusted=1&from=";
         baseUrl = baseUrl + subtractDay(getCurrentDate(), 30).getTimeInMillis() + "&to=" + getCurrentDate().getTimeInMillis() + "&isin=" + isinCode + "&mic=" + market + "&dateFormat=d/m/Y";
         ;
@@ -59,6 +59,7 @@ public class EuronextProvider {
         Elements priceElt = null;
         try {
             String ua = "Mozilla/5.0 (Macintosh)";
+            //doc = Jsoup.connect(baseUrl).userAgent(ua).get();
             doc = Jsoup.connect(baseUrl).validateTLSCertificates(false).userAgent(ua).get();
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
