@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.HashMap;
 import java.text.DecimalFormatSymbols;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -25,6 +26,14 @@ public class BloombergProvider {
 
     public static void main(String[] args) {
         BloombergProvider bloombergProvider = new BloombergProvider();
+
+        bloombergProvider.getLastPrice("CL1COM", "CL1:COM");  //WTI Crude
+        bloombergProvider.getLastPrice("SX5E", "SX5E:IND");  //EURO STOXX 50
+        bloombergProvider.getLastPrice("NL0011821202", "INGA:NA");  // ING
+        bloombergProvider.getLastPrice("LU0955120620", "RORIHUS:LX");
+        bloombergProvider.getLastPrice("IE00B1FZSC47", "IDTP:LN");  //iShares $ TIPS UCITS ETF (USD) | ITPS
+        bloombergProvider.getLastPrice("LU0234577681", "PIWEQUT:LX");  //Piguet International Fund World Equities D (USD)
+        bloombergProvider.getLastPrice("LU0334117230", "PIWEDED:LX");  //Piguet International Fund World Equities D (EUR)
         bloombergProvider.getLastPrice("US0378331005", "AAPL:US");  //Apple Inc
         bloombergProvider.getLastPrice("GB00B0CTWC01", "OLBP:LN");  // ETFS WTI Crude Oil USD
         bloombergProvider.getLastPrice("GB00B15KXV33", "CRUD:LN");  // Brent ETFS Tracker in GBX
@@ -45,6 +54,9 @@ public class BloombergProvider {
         bloombergProvider.getLastPrice("GB00B00FHZ82", "GBS:LN");  //Gold Bullion
         bloombergProvider.getLastPrice("NL0000009538", "PHIA:NA");  //Philips Amsterdam
         bloombergProvider.getLastPrice("CL1COM", "CL1:COM");  //WTI Crude
+        bloombergProvider.getLastPrice("XAUUSD", "XAUUSD:CUR");  // Gold Spot
+
+
     }
 
 
@@ -65,12 +77,12 @@ public class BloombergProvider {
 
     public void getPrices(String isin, String ticker) {
         // Possible to use 1_WEEK, 1_MONTH, 1_YEAR,5_YEAR,MAX default is 1_WEEK
-        String baseUrl = "http://www.bloomberg.com/markets/api/bulk-time-series/price/" + ticker + "?timeFrame=1_YEAR";
+        String baseUrl = "http://www.bloomberg.com/markets/api/bulk-time-series/price/" + ticker + "?timeFrame=1_MONTH";
         Document doc = null;
         Elements priceElt = null;
         try {
             String ua = "Mozilla/5.0 (Macintosh)";
-            doc = Jsoup.connect(baseUrl).ignoreContentType(true).userAgent(ua).get();
+            doc = Jsoup.connect(baseUrl).validateTLSCertificates(false).ignoreContentType(true).userAgent(ua).get();
             // System.out.println(doc.text());
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -102,6 +114,7 @@ public class BloombergProvider {
                 // Very good page on type class testing
 
                 priceValue.date = sdf1.format(date);
+                priceValue.priceValueEvol = comuteEvolution((JSONObject) prices.get(0));
                 //priceValue.date = (String) jsonPrice1.get("date)");
                 try {
                     Double priceObj = (Double) jsonPrice1.get("value");
@@ -149,7 +162,7 @@ public class BloombergProvider {
             JSONObject jsonPrice = (JSONObject) prices.get(0);
             priceValue.instrumentCode = isin;
             priceValue.provider = "Bloomberg";
-
+            priceValue.priceValueEvol = comuteEvolution((JSONObject) prices.get(0));
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = null;
             try {
@@ -167,9 +180,32 @@ public class BloombergProvider {
         }
 
         if (priceValue != null)
-            System.out.println("Store Price From Bloomberg " + priceValue.instrumentCode + " " + priceValue.date + " " + priceValue.priceValue);
+            System.out.println("Store Price From Bloomberg " + priceValue.instrumentCode + " " + priceValue.date + " " + priceValue.priceValue + " " + priceValue.priceValueEvol * 100 + "%");
         new StorePrice().storeInSqlite(priceValue);
 
 
     }
+
+
+    double comuteEvolution(JSONObject price) {
+        double evol = 0;
+        Number priceObj = (Number) price.get("lastPrice");
+        String lastUpdateDate = (String) price.get("lastUpdateDate");
+        Number prevprice;
+        JSONArray prices = (JSONArray) price.get("price");
+        JSONObject jsonPrevPrice = (JSONObject) prices.get(prices.size() - 1);
+        // Test if not same date
+        if (!((String) jsonPrevPrice.get("date")).equals(lastUpdateDate)) {
+            prevprice = (Number) jsonPrevPrice.get("value");
+        } else {
+            jsonPrevPrice = (JSONObject) prices.get(prices.size() - 2);
+            prevprice = (Number) jsonPrevPrice.get("value");
+        }
+
+        if (prevprice != null) {
+            evol = (priceObj.doubleValue() - prevprice.doubleValue()) / prevprice.doubleValue();
+        }
+        return evol;
+    }
+
 }
