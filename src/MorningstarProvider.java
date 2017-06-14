@@ -147,7 +147,8 @@ public class MorningstarProvider {
         priceValue.provider = "MS";
         // Change date format from 12-05-2015 to 12/05/2015 if the case on NL for instance
         String priceDate = array[1].replace('-', '/');
-        priceValue.date = priceDate;
+        // Change . to - for CH
+        priceValue.date = priceDate.replace('.', '/');
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
         symbols.setDecimalSeparator(',');
         DecimalFormat format = new DecimalFormat("#.####");
