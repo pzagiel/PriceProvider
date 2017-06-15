@@ -1,7 +1,6 @@
-#export CLASSPATH="/Users/pzagiel/Dropbox/Finance Toolkit/Hello/classes:/Users/pzagiel/Dropbox/Finance Toolkit/Hello/lib/jsoup-1.8.1.jar"
-cd "/Users/pzagiel/Dropbox/Finance Toolkit/Hello"
+eval cd $appHome
 export CLASSPATH="classes:lib/jsoup-1.8.3.jar:lib/sqlite-jdbc-3.7.2.jar:lib/json-simple-1.1.1.jar"
 date
-java BloombergProvider
+java -Xmn512M -Xmx1g BloombergProvider
 date
 
