@@ -1,4 +1,4 @@
-cat<< EOF | sqlite3 /Users/pzagiel/Dropbox/Finance\ Toolkit/Hello/Prices/FinancialWorld.db
+cat<< EOF | sqlite3 /Users/pzagiel/Dropbox/Finance\ Toolkit/Hello/database/FinancialWorld.db
 .separator "\t"
 select i.code,i.name,strftime('%m-%d-%Y', value_d/1000, 'unixepoch','localtime'),value,evol  from  INSTR_price p,instrument i where p.instr_id=i.id  order by i.id;
 EOF
