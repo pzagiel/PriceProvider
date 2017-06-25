@@ -1,0 +1,6 @@
+eval cd $appHome
+export CLASSPATH="classes:lib/jsoup-1.8.3.jar:lib/sqlite-jdbc-3.7.2.jar:lib/json-simple-1.1.1.jar"
+date
+java -Xmn512M -Xmx1g MorningstarProvider $1 $2 $3
+date
+
