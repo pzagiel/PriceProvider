@@ -2,7 +2,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.text.DecimalFormatSymbols;
@@ -23,16 +22,29 @@ import java.util.Date;
 public class MorningstarProvider {
     static int numberOfRetry = 0;
 
-    public static void mainNEW(String[] args) {
+    public static void main(String[] args) throws IOException {
+        // Date format is 2015-06-16
         MorningstarProvider morningstarProvider = new MorningstarProvider();
-        morningstarProvider.getHistoricalPrices("FR0010923375", "F00000JQYQ");
-        morningstarProvider.getHistoricalPrices("FR0011008762", "F00000MIEA");
+        if (args.length == 3) {
+            //ISIN
+            // MSID
+            // Date format is 2015-06-16
+            //FR0010923375 F00000JQYQ 2015-06-16
+            morningstarProvider.getHistoricalPrices(args[0], args[1], args[2]);
+        }
+        //System.out.println("Invalid arguments");
+        else if (args.length == 0) {
+            morningstarProvider.getDailyNav();
 
+        }
+
+        //morningstarProvider.getHistoricalPrices("FR0010923375", "F00000JQYQ");
+        //morningstarProvider.getHistoricalPrices("FR0011008762", "F00000MIEA");
 
 
     }
 
-    public static void main(String[] args) {
+    public void getDailyNav() {
 
         MorningstarProvider morningstarProvider = new MorningstarProvider();
         FundsList myfunds = new FundsList();
@@ -61,7 +73,7 @@ public class MorningstarProvider {
                 price.instrumentCode = fund.Isin;
                 System.out.println(fund.name + " " + price.date + " " + " Price:" + price.priceValue + " Evol:" + price.priceValueEvol * 100 + "%");
                 try {
-                    //new StorePrice().store("Prices/" + fund.Isin + ".xls", price);
+                    //new StorePrice().storeInXLS("Prices/" + fund.Isin + ".xls", price);
                     new StorePrice().storeInSqlite(price);
                 } catch (Exception e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -175,8 +187,14 @@ public class MorningstarProvider {
     }
 
 
-    public Collection getHistoricalPrices(String isin, String MSId) {
-        String url = "http://tools.morningstarpro.fr/api/rest.svc/timeseries_price/i6wq0tnd7a?currencyId=EUR&idtype=Morningstar&frequency=daily&startDate=2016-02-09&priceType=&outputType=COMPACTJSON&id=" + MSId + "]2]0]UNIVE$$ALL";
+    public Collection getHistoricalPrices(String isin, String MSId, String fromDate) throws IOException {
+        // Url H20
+        // http://tools.morningstarpro.fr/api/rest.svc/timeseries_price/i6wq0tnd7a?currencyId=EUR&idtype=Morningstar&frequency=daily&startDate=2007-06-01&priceType=&outputType=COMPACTJSON&id=F00000JQYQ]2]0]FOEUR$$ALL
+
+        //String url = "http://tools.morningstarpro.fr/api/rest.svc/timeseries_price/i6wq0tnd7a?currencyId=EUR&idtype=Morningstar&frequency=daily&startDate=2010-06-16&priceType=&outputType=COMPACTJSON&id=F00000JQYQ]2]0]FOEUR$$ALL";
+        String url = "http://tools.morningstarpro.fr/api/rest.svc/timeseries_price/i6wq0tnd7a?currencyId=EUR&idtype=Morningstar&frequency=daily&startDate=" + fromDate + "&priceType=&outputType=COMPACTJSON&id=" + MSId + "]2]0]FOEUR$$ALL";
+
+        //String url = "http://tools.morningstarpro.fr/api/rest.svc/timeseries_price/i6wq0tnd7a?currencyId=EUR&idtype=Morningstar&frequency=daily&startDate=2016-02-09&priceType=&outputType=COMPACTJSON&id=" + MSId + "]2]0]UNIVE$$ALL";
         Document doc = null;
         Elements priceElt = null;
         try {
@@ -195,6 +213,7 @@ public class MorningstarProvider {
 
         // Loop on Price
         ArrayList prices = (ArrayList) obj;
+        ArrayList priceValues = new ArrayList();
         for (int i = 0; i < prices.size(); i++) {
             ArrayList priceData = (ArrayList) prices.get(i);
             Price priceValue = new Price();
@@ -205,11 +224,16 @@ public class MorningstarProvider {
             priceValue.date = sdf.format(priceDate);
             priceValue.priceValue = (Double) priceData.get(1);
             priceValue.provider = "MS";
-            if (priceValue != null)
+            if (priceValue != null) {
                 System.out.println("Store Price From Morningstar " + priceValue.instrumentCode + " " + priceValue.date + " " + priceValue.priceValue);
-            new StorePrice().storeInSqlite(priceValue);
+                priceValues.add(priceValue);
+            }
+            //new StorePrice().storeInSqlite(priceValue);
         }
-        return null;
+        StorePrice storePrice = new StorePrice();
+        Price.computeEvol(priceValues);
+        storePrice.storeInXLS(isin + ".xls", priceValues);
+        return priceValues;
     }
 
 }
