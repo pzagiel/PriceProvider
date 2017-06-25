@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.ArrayList;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,22 +18,30 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public class StorePrice {
+
+
     // Store in individual Text file
-    public void store(String fileName, Price price) throws IOException {
+    public void storeInXLS(String fileName, ArrayList<Price> prices) throws IOException {
         File priceFile = new File(fileName);
         BufferedWriter writer = new BufferedWriter(new FileWriter(priceFile));
-
-        if (price != null) {
-            writer.write(price.date);
-            writer.write(",");
-            writer.write(new String(Double.toString(price.priceValue)));
-            writer.write(",");
-            writer.write(new String(Double.toString(price.priceValueEvol)));
-            writer.write("\n");
+        for (Price price : prices) {
+            if (price != null) {
+                writer.write(price.date);
+                writer.write("\t");
+                writer.write(new String(Double.toString(price.priceValue)));
+                writer.write("\t");
+                writer.write(new String(Double.toString(price.priceValueEvol)));
+                writer.write("\n");
+            }
         }
-
-        //Close writer
         writer.close();
+    }
+
+    // To test carrefully
+    public void storeInSqlite(ArrayList<Price> prices) {
+        for (Price price : prices) {
+            storeInSqlite(price);
+        }
     }
 
     // Store in sqliteDB
@@ -53,7 +62,7 @@ public class StorePrice {
         // Insert Statement
         String sql = "INSERT INTO INSTR_PRICE (provider_id,instr_id,currency,value_d,value,evol) " +
                 "VALUES (" +
-                "(select id from provider where code='"+price.provider+"')," +
+                "(select id from provider where code='" + price.provider + "')," +
                 "(select id from INSTRUMENT where code='" + price.instrumentCode + "')," +
                 "'EUR'," +
                 date.getTime() + "," +
@@ -70,7 +79,7 @@ public class StorePrice {
                 sql = "UPDATE INSTR_PRICE " +
                         "SET value=" + price.priceValue + " , evol      =" + price.priceValueEvol +
                         " WHERE instr_id=(select id from INSTRUMENT where code='" + price.instrumentCode + "') AND " +
-                        "value_d=" + date.getTime()+ " AND provider_id=(select id FROM PROVIDER where code='"+price.provider+"')";
+                        "value_d=" + date.getTime() + " AND provider_id=(select id FROM PROVIDER where code='" + price.provider + "')";
                 //System.out.println(sql);
 
                 try {
@@ -78,7 +87,7 @@ public class StorePrice {
                     stmt.executeUpdate(sql);
                     //System.out.println("Update no Insert for Instrument " + price.instrumentCode);
                 } catch (SQLException e1) {
-                    //e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
 
             }
