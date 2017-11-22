@@ -27,6 +27,9 @@ public class BloombergProvider {
     public static void main(String[] args) {
         BloombergProvider bloombergProvider = new BloombergProvider();
 
+       bloombergProvider.getLastPrice("IL0011213001", "SODA:US");  //Sodastream
+        bloombergProvider.getLastPrice("US01609W1027", "BABA:US");  //Alibaba
+        bloombergProvider.getLastPrice("US98978V1035", "ZTS:US");  //Zoetis Inc
         bloombergProvider.getLastPrice("CL1COM", "CL1:COM");  //WTI Crude
         bloombergProvider.getLastPrice("SX5E", "SX5E:IND");  //EURO STOXX 50
         bloombergProvider.getLastPrice("NL0011821202", "INGA:NA");  // ING
