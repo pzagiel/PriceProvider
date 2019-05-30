@@ -8,6 +8,7 @@ INSERT INTO PROVIDER (code,name) VALUES ('frankfurtBoerse','frankfurtBoerse');
 INSERT INTO PROVIDER (code,name) VALUES ('GoogleNyse','Google Finance');
 INSERT INTO PROVIDER (code,name) VALUES ('Euronext','Euronext');
 INSERT INTO PROVIDER (code,name) VALUES ('Bloomberg','Bloomberg');
+INSERT INTO PROVIDER (code,name) VALUES ('Alpha','AlphaAdvantage');
 EOF
 
 
