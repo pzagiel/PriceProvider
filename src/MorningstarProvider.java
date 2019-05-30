@@ -121,7 +121,7 @@ public class MorningstarProvider {
         Elements priceElt = null;
         Elements priceEltValue = null;
         try {
-            doc = Jsoup.connect(codeTitre).timeout(10 * 1000).get();
+            doc = Jsoup.connect(codeTitre).timeout(20 * 1000).get();
         } catch (IOException e) {
             //e.printStackTrace();
             //System.out.println("Cannot find url: " + codeTitre);
@@ -232,6 +232,7 @@ public class MorningstarProvider {
         }
         StorePrice storePrice = new StorePrice();
         Price.computeEvol(priceValues);
+        storePrice.storeInSqlite(priceValues);
         storePrice.storeInXLS(isin + ".xls", priceValues);
         return priceValues;
     }
