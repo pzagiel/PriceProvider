@@ -17,16 +17,21 @@ import java.text.DecimalFormat;
  */
 public class GoogleFinanceProvider {
 
+    // API to try because old doesn't work//
+    //https://finance.google.com/finance/getprices?q=SODA&x=NASD&p=1d&i=60&f=d,c,o,h,l,v //
+
     public static void main(String[] args) throws IOException {
         GoogleFinanceProvider provider = new GoogleFinanceProvider();
         // Get Price of VALE S.A on NYSE
-        provider.getPrice("US91912E1055", "https://www.google.com/finance/historical?q=NYSE%3AVALE&ei=oCM5VonTG8PGUbrvrNAF");
-        provider.getPrice("CA3518581051", "https://www.google.com/finance/historical?q=NYSE%3AFNV&ei=9JfmVuPNL9jjsgHNi6zABQ");
-        provider.getPrice("US0378331005", "https://www.google.com/finance/historical?q=NASDAQ:AAPL");
-        provider.getPrice("US5007541064", "https://www.google.com/finance/historical?q=NASDAQ:KHC");
-        provider.getPrice("JE00B2QKY057", "http://www.google.com/finance/historical?q=LON%3ASHP&ei=WPUDV_ndJ4qUUtrqjYAB");
-        provider.getPrice("US19122T1097", "http://www.google.com/finance/historical?q=NYSE%3ACCE&ei=H4Y0V8HnHNLBU_76nsAN");
-        provider.getPrice("NL0000009538", "https://www.google.com/finance/historical?q=AMS:PHIA");  //Philips Amsterdam Price
+        //provider.getPrice("US91912E1055", "http://www.google.com/finance/historical?q=NYSE:VALE");
+        provider.getPrice("US47215P1066", "http://finance.google.com/finance/historical?q=NASDAQ:JD"); // JD.COM
+        provider.getPrice("NL0000226223", "http://finance.google.com/finance/historical?q=EPA:STM");
+        provider.getPrice("CA3518581051", "http://finance.google.com/finance/historical?q=NYSE:FNV");
+        provider.getPrice("US0378331005", "http://finance.google.com/finance/historical?q=NASDAQ:AAPL");
+        provider.getPrice("US5007541064", "http://finance.google.com/finance/historical?q=NASDAQ:KHC");
+        provider.getPrice("JE00B2QKY057", "http://finance.google.com/finance/historical?q=LON:SHP");
+        provider.getPrice("US19122T1097", "http://finance.google.com/finance/historical?q=NYSE:CCE");
+        provider.getPrice("NL0000009538", "http://finance.google.com/finance/historical?q=AMS:PHIA");  //Philips Amsterdam Price
 
 
     }
