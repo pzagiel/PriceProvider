@@ -14,7 +14,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.DecimalFormat;
 import java.security.Security;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+//import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,7 +30,9 @@ public class EuronextProvider {
         EuronextProvider euronextProvider = new EuronextProvider();
         //euronextProvider.getLastPriceForOption("", "", "", "");
 
-        euronextProvider.getLastPrice("BE0003884047", "XBRU"); // Umicore
+        //euronextProvider.getLastPrice("BE0003884047", "XBRU"); // Umicore  splu Umicore nouvel ISIN ?  BE0974320526       
+        euronextProvider.getLastPrice("NL0000226223", "XPAR"); // STMICROELECTRONICS 
+        euronextProvider.getLastPrice("BE0974320526", "XBRU"); // Umicore
         euronextProvider.getLastPrice("FR0007054358", "XPAR"); // Lyxor EURO STOXX
         euronextProvider.getLastPrice("LU0252633754", "XPAR"); // Lyxor DAX
         euronextProvider.getLastPrice("FR0000051732", "XPAR"); // ATOS
