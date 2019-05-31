@@ -1,13 +1,17 @@
 appHome="/Users/pzagiel/Dropbox/Finance\ Toolkit/Hello/"
+appHome="/Users/pzagiel/Development/PriceProvider/"
 eval cd $appHome
 export CLASSPATH="classes:lib/jsoup-1.8.3.jar:lib/sqlite-jdbc-3.7.2.jar:lib/json-simple-1.1.1.jar"
 date
-java BloombergProvider
+#java BloombergProvider
 java MorningstarProvider 
-java GoogleFinanceProvider
+#java GoogleFinanceProvider
 java FrankfurtBoerseProviderNew
-java EuronextProvider
-eval cp $appHome"/database/FinancialWorld.db" /Volumes/KINGSTON/Backup/FinancialWorld.db.$(date "+%m-%d-%y%_%H%M%S")
-eval $appHome"/script/getAllPrices" >/Volumes/KINGSTON/Backup/Prices.bck.csv.$(date "+%m-%d-%y%_%H%M%S")
+#java EuronextProvider
+cp /Users/pzagiel/Development/PriceProvider/FinancialWorld.db "/Users/pzagiel/Dropbox/Finance Toolkit/FinancialWorld.db"
+$appHome"/script/getAllPrices" >"/Users/pzagiel/Dropbox/Finance Toolkit/Prices.bck.csv"
+
+#cp /Users/pzagiel/Development/FinancialWorld.db "/Users/pzagiel/Dropbox/Finance Toolkit/FinancialWorld.db."$(date "+%m-%d-%y%_%H%M%S")
+#eval $appHome"/script/getAllPrices" >/Volumes/KINGSTON/Backup/Prices.bck.csv.$(date "+%m-%d-%y%_%H%M%S")
 date
 

@@ -1,0 +1,9 @@
+appHome="/Users/pzagiel/Development/PriceProvider/"
+eval cd $appHome
+automator script/BloombergPriceAutomatorApp.app
+script/splitJsonData.awk
+for i in $(ls priceData/*.json)
+do
+echo "processing" $i
+script/getBloombergPrices $i
+done

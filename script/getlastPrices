@@ -1,4 +1,5 @@
 db="/Users/pzagiel/Dropbox/Finance Toolkit/Hello/database//FinancialWorld.db"
+db="/Users/pzagiel/Development/PriceProvider/FinancialWorld.db" 
 cat<< EOF | sqlite3 "$db"
 .separator "\t"
 select i.code,i.name,strftime('%m-%d-%Y', value_d/1000, 'unixepoch','localtime'),value,evol,timestamp  

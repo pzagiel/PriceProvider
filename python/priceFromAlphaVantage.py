@@ -9,6 +9,7 @@ from datetime import datetime
 #URL="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=UMI.BR&apikey=EZ49SSU14R2EGHNS"
 
 instrList = {
+ 'AAPL':'US0378331005',
  'INGA.AMS':'NL0011821202',
  'ATO.PAR' :'FR0000051732',
  'PHIA.AMS':'NL0000009538',
@@ -19,9 +20,9 @@ instrList = {
  'EL.PAR':'FR0000121667',
  'WLN.PAR':'FR0011981968',
  'ALGN':'US0162551016',
- 'AMZN':'US0162551016',
- 'BABA':'US0231351067',
- 'MU':'US01609W1027',
+ 'AMZN':'US0231351067',
+ 'BABA':'US01609W1027',
+ 'MU':'US5951121038',
  'JD':'US47215P1066'
  }
 
@@ -73,7 +74,8 @@ if len(sys.argv)<2:
  	time.sleep(15)
  	lastPrice=getLastPrice(symbol)
  	isin=instrList.get(symbol)
- 	print symbol+"-"+isin+" "+lastPrice.priceDate+":"+lastPrice.priceValue+" changePerc "+lastPrice.changePerc 
+ 	print symbol+"-"+isin+" "+lastPrice.value+" at:"+lastPrice.getDate().strftime('%Y-%m-%d')+" evol:"+str(lastPrice.evol*100)
+ 	lastPrice.store();
  sys.exit(0)
 
 #one argument that is symbol of stock
