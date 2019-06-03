@@ -19,6 +19,16 @@ import java.util.ArrayList;
  */
 public class StorePrice {
 
+    public void storeDebug(String name, String message) {
+        File priceFile = new File(name + ".txt");
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(priceFile));
+            writer.write(message);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
 
     // Store in individual Text file
     public void storeInXLS(String fileName, ArrayList<Price> prices) throws IOException {
