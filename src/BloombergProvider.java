@@ -21,11 +21,15 @@ import java.util.concurrent.TimeUnit;
  * Time: 7:52:16 PM
  * To change this template use File | Settings | File Templates.
  */
+
+// New API to test
+// https://www.bloomberg.com/markets2/api/history/IFX:GR/PX_LAST?timeframe=1_MONTH&period=daily&volumePeriod=daily
 public class BloombergProvider {
     HashMap<String, String> isinLookup = new HashMap<String, String>() {
         {
 
 
+            put("MSE:FP", "FR0007054358");  // Lyxor Eurostox
             put("WLN:FP", "FR0011981968");  // Atos Worldline
             put("ALGN:US", "US0162551016");  // Align Technology
             put("UMI:BB", "BE0974320526");  // Umicore
@@ -38,7 +42,15 @@ public class BloombergProvider {
 
             put("GB00B00FHZ82", "GBS:LN");  //Gold Bullion
             put("ATO:FP", "FR0000051732");  //ATOS
-            put("NAH2VIR:FP", "FR0011015478");  // H20 VIVACE EUR
+            put("NAH2VIR:FP", "FR0011015478");  // H20 VIVACE EUR FR0011015478
+            put("NHRCUSD:FP", "FR0012497980");  // H20 vivace HUSD
+            put("NH2MBRC:FP", "FR0010923375");  // H20 Multibonds FR0010923375
+            put("H2OMERC:FP", "FR0011008762");  // H20  Multiequities FR0011008762
+            put("NAH2ALR:FP", "FR0011015460");  // H20 Allegro EUR FR0011015460
+            
+
+
+
             put("IFX:GR", "DE0006231004");  // Infineon
             put("GBTPGR10:IND", "GBTPGR10:IND");  // Italy 10Y Govt Bonds
             put("MU:US", "US5951121038");  // Micron Technology
@@ -47,7 +59,7 @@ public class BloombergProvider {
             put("SPX:IND", "SPX");  // S&P 500 Index
             put("JD:US", "US47215P1066");  // JD.COM
             put("STM:FP", "NL0000226223");  // STMicroelectronics NV
-            put("NH2MBRC:FP", "FR0010923375");  // H20 Multibonds
+            
             put("SODA:US", "IL0011213001");  //Sodastream
             put("BABA:US", "US01609W1027");  //Alibaba
             put("ZTS:US", "US98978V1035");  //Zoetis Inc
@@ -75,6 +87,7 @@ public class BloombergProvider {
             put("GBS:LN", "GB00B00FHZ82");  //Gold Bullion
 
             put("CL1COM", "CL1:COM");  //WTI Crude
+            put("GB00B15KXV33", "CRUD:LN");  //Brent
         }
     };
 
@@ -148,7 +161,7 @@ public class BloombergProvider {
             filename = args[0];
             BloombergProvider bloombergProvider = new BloombergProvider();
             String jsonData = bloombergProvider.loadJsonData(filename);
-            bloombergProvider.storeLastPriceFromData(jsonData);
+            bloombergProvider.storePricesFromData(jsonData);
         }
 
     }
