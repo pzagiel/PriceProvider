@@ -10,6 +10,13 @@ from datetime import datetime
 # URL="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=UMI.BR&apikey=EZ49SSU14R2EGHNS"
 
 instrList = {
+    'ASIT.BRU':'ASIT.BRU',
+    'ACWI':'ACWI',
+    'BAR.BRU':'BAR.BRU',
+    'AMD':'AMD',
+    'ADBE':'US00724F1012',
+    'CROX': 'CROX',
+    'PANW':'US6974351057',
     'AAPL': 'US0378331005',
     'INGA.AMS': 'NL0011821202',
     'ATO.PAR': 'FR0000051732',
@@ -18,13 +25,13 @@ instrList = {
     'IFX.FRK': 'DE0006231004',
     'STM.PAR': 'NL0000226223',
     'CAP.PAR': 'FR0000125338',
-    'EL.PAR': 'FR0000121667',
     'WLN.PAR': 'FR0011981968',
     'ALGN': 'US0162551016',
     'AMZN': 'US0231351067',
     'BABA': 'US01609W1027',
     'MU': 'US5951121038',
-    'JD': 'US47215P1066'
+    'JD': 'US47215P1066',
+    'EL.PAR': 'FR0000121667'
 }
 
 
@@ -32,6 +39,16 @@ def convertToDate(strDate):
     mydateTime = datetime.strptime(strDate, '%Y-%m-%d')
     return mydateTime
 
+def getHistPrice(ticker):
+    param = {
+        "function": "TIME_SERIES_DAILY",
+        "symbol": ticker,
+        "outputsize": "full",
+        "apikey": "EZ49SSU14R2EGHNS",
+    }
+    r = requests.get("https://www.alphavantage.co/query", param)
+    print r.text
+    data = json.loads(r.text)    
 
 def getLastPrice(ticker):
     param = {
@@ -70,8 +87,11 @@ def getLastPrice(ticker):
     myPrice.currency = "EUR"
     instrument = Price.INSTRUMENT()
     # instr_id=instrument.getId(instrList.get(ticker))
-
-    myPrice.instr_id = instrument.getId(instrList.get(ticker))
+    if instrList.get(ticker) is not None:
+        myPrice.instr_id = instrument.getId(instrList.get(ticker))
+    else:
+        # if can resolve isin use ticker to find id of instrument
+        myPrice.instr_id = instrument.getId(ticker)
     # myPrice.value=1
     return myPrice
 
@@ -89,6 +109,10 @@ if len(sys.argv) < 2:
             '%Y-%m-%d') + " evol:" + str(lastPrice.evol * 100)
         lastPrice.store();
     sys.exit(0)
+
+if len(sys.argv) == 3:
+    print "get Historical price since begin of year"
+    getHistPrice(sys.argv[1])
 
 # one argument that is symbol of stock
 ticker = sys.argv[1]
