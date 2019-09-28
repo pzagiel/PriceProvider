@@ -96,14 +96,12 @@
 						<array>
 							<true/>
 							<string></string>
-							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/IQQV:GR?timeFrame=1_MONTH
-</string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/IQQV:GR?timeFrame=1_MONTH</string>
 						</array>
 						<array>
 							<true/>
 							<string></string>
-							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/IFX:GR?timeFrame=1_MONTH
-</string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/IFX:GR?timeFrame=1_MONTH</string>
 						</array>
 						<array>
 							<true/>
@@ -200,6 +198,43 @@
 							<string></string>
 							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/WLN:FP?timeFrame=1_MONTH</string>
 						</array>
+						<array>
+							<true/>
+							<string></string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/NAH2VIR:FP?timeFrame=1_MONTH</string>
+						</array>
+						<array>
+							<true/>
+							<string></string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/NH2MBRC:FP?timeFrame=1_MONTH</string>
+						</array>
+						<array>
+							<true/>
+							<string></string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/H2OMERC:FP?timeFrame=1_MONTH</string>
+						</array>
+						<array>
+							<true/>
+							<string></string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/NHRCUSD:FP?timeFrame=1_MONTH</string>
+						</array>
+						<array>
+							<true/>
+							<string></string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/NAH2ALR:FP?timeFrame=1_MONTH</string>
+						</array>
+						<array>
+							<true/>
+							<string></string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/MSE:FP?timeFrame=1_MONTH</string>
+						</array>
+						
+
+
+
+
+
+
 
 					</array>
 				</dict>
