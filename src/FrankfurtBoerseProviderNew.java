@@ -26,6 +26,7 @@ public class FrankfurtBoerseProviderNew {
     public static void main(String[] args) {
 
         FrankfurtBoerseProviderNew frankfurtBoerseProviderNew = new FrankfurtBoerseProviderNew();
+        frankfurtBoerseProviderNew.getLastPrice("DE0006231004", "1244,1038049,44,814"); //Infineon Extra 1038049= Valor Code  
         frankfurtBoerseProviderNew.getLastPrice("FR0007054358", "00000012,1189343,13,814");        // Lyxor Eurostox
         frankfurtBoerseProviderNew.getLastPrice("FR0007054358", "00000012,1189343,13,814");        //
         // Search preLoadedSeries in page source
@@ -47,7 +48,10 @@ public class FrankfurtBoerseProviderNew {
 
 
     public void getLastPrice(String isinCode, String valorCode) {
-        String baseUrl = "http://proxy.boerse-frankfurt.de/cst/BoerseFrankfurt/Share/chart.json?instruments=" + valorCode + "&period=OneWeek";
+        // New Url used for chart, only need ISIN better check consistency
+        //https://api.boerse-frankfurt.de/tradingview/history?symbol=XFRA:DE0006231004&resolution=60&from=1561564096&to=1561996156
+        String baseUrl = "http://proxy.boerse-frankfurt.de/cst/BoerseFrankfurt/Share/chart.json?instruments="; 
+                //+ valorCode + "&period=OneWeek";
 
         //System.out.println(baseUrl);
         Document doc = null;
