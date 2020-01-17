@@ -1,4 +1,6 @@
 Name,ISIN,DsId,DS
+ISHARES DAX UCITS ETF,DE0005933931,0P0000M54C,morningstar.be/be/etf
+LYXOR UC ESTX50-D-EUR-ETF/DIS,FR0007054358,0P00000MRI,morningstar.be/be/fund
 Pictet - Robotics P USD,LU1279333675,F00000WFC4,morningstar.be/be/fund
 Pictet - Robotics P EUR,LU1279334210,F00000WFC3,morningstar.be/be/fund
 db Physical Gold ETC | XGLDS,GB00B5840F36,0P0000RRMP,morningstar.be/be/fund
@@ -44,7 +46,7 @@ MS INV US GRW-A-USD-FD,LU0073232471,F0GBR04BG3,morningstar.be/fr/fund
 SPDR S&P500-S1-ETF/DIS,US78462F1030,0P00002D7X,morningstar.fr/fr/etf
 WELLS FARG(L)WW US AC GRW-I-USD-FD,LU0353189763,F000001ZSD,morningstar.nl/nl/fund
 NVESCO ASIA CONS DDE-A-USD-FD,LU0334857355,f000000r1d,morningstar.be/fr/fund
-ETFS CMDTY SEC LTD BRENT CRUDE/EUR,DE000A1N49P6,,
+ETFS CMDTY SEC LTD BRENT CRUDE/EUR,DE000A1N49P6,0P0000WTOT,morningstar.be/be/etf
 ETFS WTI Crude Oil USD,GB00B15KXV33,0P00006SJU,morningstar.be/fr/etf
 ETFS Brent Oil 1 month ETC (GBP),GB00B0CTWC01,0P0000AATV,morningstar.co.uk/uk/etf
 BlackRock Strategic Fund European Absolute Return A2,LU0411704413,f000002m3n,morningstar.be/fr
