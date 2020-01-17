@@ -1,0 +1,8 @@
+Select instrument.name,instr_id,value,evol,strftime('%m-%d-%Y', value_d/1000, 'unixepoch','localtime') as date ,provider.name
+ from INSTR_PRICE, INSTRUMENT,PROVIDER 
+where 
+ INSTR_PRICE.instr_id=INSTRUMENT.id
+ and iNSTR_PRICE.provider_id=PROVIDER.id
+group by instr_id
+Having max(value_d)
+order by value_d desc,instrument.name
