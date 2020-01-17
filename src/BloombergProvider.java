@@ -62,6 +62,7 @@ public class BloombergProvider {
             
             put("SODA:US", "IL0011213001");  //Sodastream
             put("BABA:US", "US01609W1027");  //Alibaba
+            put("9988:HK", "9988.HK");  //Alibaba
             put("ZTS:US", "US98978V1035");  //Zoetis Inc
             put("CL1:COM", "CL1COM");  //WTI Crude
             put("SX5E:IND", "SX5E");  //EURO STOXX 50
