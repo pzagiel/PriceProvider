@@ -10,6 +10,13 @@ from datetime import datetime
 # URL="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=UMI.BR&apikey=EZ49SSU14R2EGHNS"
 
 instrList = {
+    'NVDA':'NVDA',
+    'MDB':'MDB',
+    'CSCO':'CSCO',
+    'TINC.BRU':'TINC.BRU',
+    'SBUX':'SBUX',
+    'TEVA':'TEVA',
+    'XIOR.BRU':'XIOR.BRU',
     'ASIT.BRU':'ASIT.BRU',
     'ACWI':'ACWI',
     'BAR.BRU':'BAR.BRU',
@@ -29,6 +36,7 @@ instrList = {
     'ALGN': 'US0162551016',
     'AMZN': 'US0231351067',
     'BABA': 'US01609W1027',
+    '9988.HK': '9988.HK',
     'MU': 'US5951121038',
     'JD': 'US47215P1066',
     'EL.PAR': 'FR0000121667'
@@ -47,8 +55,26 @@ def getHistPrice(ticker):
         "apikey": "EZ49SSU14R2EGHNS",
     }
     r = requests.get("https://www.alphavantage.co/query", param)
-    print r.text
-    data = json.loads(r.text)    
+    #print r.text
+    data = json.loads(r.text) 
+    priceData = data["Time Series (Daily)"]
+    lastPrice=float(0.0)
+    for priceDateString in sorted (priceData.keys()):
+        priceDate = convertToDate(priceDateString)
+        if priceDate.year > 2019 :
+            myPrice = Price.INSTR_PRICE(
+            value_d=Price.INSTR_PRICE.convertDateToTime(priceDate),
+            value=priceData[priceDateString]["4. close"],
+            evol=0)
+            myPrice.provider_id = 8  # Alpha
+            myPrice.currency = "EUR"
+            if lastPrice != 0.0:
+                myPrice.evol=((float(myPrice.value)-lastPrice)/float(lastPrice))
+            instrument = Price.INSTRUMENT()
+            myPrice.instr_id = instrument.getId(ticker)
+            myPrice.store();
+            print ticker +":"+priceDateString+ " "+str(lastPrice)+ " "+str(myPrice.evol*100)+"%"
+        lastPrice=float(priceData[priceDateString]["4. close"])  
 
 def getLastPrice(ticker):
     param = {
@@ -111,8 +137,11 @@ if len(sys.argv) < 2:
     sys.exit(0)
 
 if len(sys.argv) == 3:
-    print "get Historical price since begin of year"
-    getHistPrice(sys.argv[1])
+    if sys.argv[2] == "YTD" :
+        print "get Historical price since begin of year"
+        getHistPrice(sys.argv[1])
+    else :
+        print "Date Frame not supported only YTD"
 
 # one argument that is symbol of stock
 ticker = sys.argv[1]
