@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project relativePaths="false" version="4">
-  <component name="BookmarkManager">
-    <editor_bookmark url="file://$PROJECT_DIR$/src/StorePrice.java" line="21" number="5" description="public void storeDebug()" />
-  </component>
   <component name="CCaseConfig">
     <option name="checkoutReserved" value="false" />
     <option name="markExternalChangeAsUpToDate" value="true" />
@@ -76,7 +73,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/MorningstarProvider.java" line="233" class="MorningstarProvider" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/MorningstarProvider.java" line="234" class="MorningstarProvider" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -102,7 +99,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/BloombergProvider.java" line="349" class="BloombergProvider" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/BloombergProvider.java" line="363" class="BloombergProvider" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -115,7 +112,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/YahooFinanceProvider.java" line="49" class="YahooFinanceProvider" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/YahooFinanceProvider.java" line="52" class="YahooFinanceProvider" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -141,7 +138,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/BloombergProvider.java" line="274" class="BloombergProvider" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/BloombergProvider.java" line="288" class="BloombergProvider" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -154,7 +151,72 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/BloombergProvider.java" line="240" class="BloombergProvider" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/BloombergProvider.java" line="254" class="BloombergProvider" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/MorningstarProvider.java" line="60" class="MorningstarProvider" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/MorningstarProvider.java" line="73" class="MorningstarProvider" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/MorningstarProvider.java" line="135" class="MorningstarProvider" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/MorningstarProvider.java" line="119" class="MorningstarProvider" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/MorningstarProvider.java" line="126" class="MorningstarProvider" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -201,7 +263,24 @@
       </breakpoint>
     </breakpoint_any>
     <breakpoint_rules />
-    <ui_properties />
+    <ui_properties>
+      <property name="line_breakpoints_groupByMethods" value="false" />
+      <property name="line_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_flattenPackages" value="true" />
+      <property name="method_breakpoints_flattenPackages" value="true" />
+      <property name="field_breakpoints_flattenPackages" value="true" />
+      <property name="exception_breakpoints_groupByMethods" value="false" />
+      <property name="line_breakpoints_groupByClasses" value="true" />
+      <property name="method_breakpoints_viewId" value="TABLE" />
+      <property name="field_breakpoints_groupByMethods" value="false" />
+      <property name="line_breakpoints_flattenPackages" value="true" />
+      <property name="field_breakpoints_groupByClasses" value="true" />
+      <property name="method_breakpoints_groupByClasses" value="true" />
+      <property name="exception_breakpoints_viewId" value="TABLE" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="method_breakpoints_groupByMethods" value="false" />
+    </ui_properties>
   </component>
   <component name="ErrorTreeViewConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -212,33 +291,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BloombergProvider.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/BloombergProvider.java">
+      <file leaf-file-name="MorningstarProvider.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MorningstarProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="53" selection-start="8560" selection-end="8560" vertical-scroll-proportion="0.72687227">
-              <folding>
-                <element signature="docComment;class#BloombergProvider#0" expanded="false" />
-                <element signature="class#681:3412" expanded="false" />
-                <element signature="initializer##0;class#681:3412" expanded="false" />
-                <element signature="method#queryBloombergForInstruments#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#getInstruments#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#loadJsonData#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#getIsin#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#getTicker#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#storePricesFromData#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#storeLastPriceFromData#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#getPrices#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#getLastPrice#0;class#BloombergProvider#0" expanded="false" />
-                <element signature="method#comuteEvolution#0;class#BloombergProvider#0" expanded="false" />
-              </folding>
+            <state line="26" column="66" selection-start="779" selection-end="779" vertical-scroll-proportion="0.46255508">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlphaAdvantageProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AlphaAdvantageProvider.java">
+      <file leaf-file-name="FrankfurtBoerseProviderNew.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FrankfurtBoerseProviderNew.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="97" selection-start="297" selection-end="297" vertical-scroll-proportion="0.28784648">
+            <state line="51" column="10" selection-start="2425" selection-end="2425" vertical-scroll-proportion="0.033039648">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BloombergProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BloombergProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="66" selection-start="4069" selection-end="4127" vertical-scroll-proportion="0.8259912">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrankfurtBoerseProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FrankfurtBoerseProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="13" selection-start="399" selection-end="399" vertical-scroll-proportion="0.033039648">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StorePrice.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/StorePrice.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="100" column="0" selection-start="3906" selection-end="3906" vertical-scroll-proportion="0.907489">
               <folding />
             </state>
           </provider>
@@ -362,9 +454,9 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
-  <component name="RunManager" selected="Application.BloombergProvider">
+  <component name="RunManager" selected="Application.MorningstarProvider">
     <tempConfiguration default="false" name="BloombergProvider" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" value="BloombergProvider" />
+      <option name="MAIN_CLASS_NAME" value="MorningstarProvider" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/priceData/price1.json" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -393,6 +485,21 @@
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -410,21 +517,6 @@
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="wholeProject" />
       </option>
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
       <method>
         <option name="Make" value="true" />
       </method>
@@ -472,7 +564,7 @@
     <configuration default="false" name="MorningstarProvider" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" value="MorningstarProvider" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="LU1279333675 F00000WFC4 2017-12-28" />
+      <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -546,7 +638,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="17" y="23" width="1420" height="847" extended-state="0" />
+    <frame x="9" y="23" width="1420" height="831" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
@@ -554,17 +646,17 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="1" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45994475" order="3" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4562147" order="3" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="13" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27348065" order="10" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25706214" order="10" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="0" />
       <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32968637" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28154632" order="0" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="11" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
@@ -642,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrankfurtBoerseProviderNew.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="61" selection-start="1745" selection-end="1757" vertical-scroll-proportion="0.017857144">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/EuronextProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="59" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.02276176">
@@ -670,20 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MorningstarProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="0" selection-start="10391" selection-end="10391" vertical-scroll-proportion="0.8634294">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrankfurtBoerseProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="7" selection-start="426" selection-end="426" vertical-scroll-proportion="0.02276176">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/JdbcSQLiteConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="12" selection-start="367" selection-end="367" vertical-scroll-proportion="0.022255193">
@@ -698,13 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StorePrice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.02276176">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Price.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="647" selection-end="647" vertical-scroll-proportion="0.46735904">
@@ -714,29 +778,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AlphaAdvantageProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="97" selection-start="297" selection-end="297" vertical-scroll-proportion="0.28784648">
+        <state line="10" column="4" selection-start="305" selection-end="305" vertical-scroll-proportion="0.2276176">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrankfurtBoerseProviderNew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="10" selection-start="2425" selection-end="2425" vertical-scroll-proportion="0.033039648">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrankfurtBoerseProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="399" selection-end="399" vertical-scroll-proportion="0.033039648">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StorePrice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="0" selection-start="3906" selection-end="3906" vertical-scroll-proportion="0.907489">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BloombergProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="53" selection-start="8560" selection-end="8560" vertical-scroll-proportion="0.72687227">
-          <folding>
-            <element signature="docComment;class#BloombergProvider#0" expanded="false" />
-            <element signature="class#681:3412" expanded="false" />
-            <element signature="initializer##0;class#681:3412" expanded="false" />
-            <element signature="method#queryBloombergForInstruments#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#getInstruments#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#loadJsonData#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#getIsin#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#getTicker#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#storePricesFromData#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#storeLastPriceFromData#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#getPrices#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#getLastPrice#0;class#BloombergProvider#0" expanded="false" />
-            <element signature="method#comuteEvolution#0;class#BloombergProvider#0" expanded="false" />
-          </folding>
+        <state line="95" column="66" selection-start="4069" selection-end="4127" vertical-scroll-proportion="0.8259912">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MorningstarProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="66" selection-start="779" selection-end="779" vertical-scroll-proportion="0.46255508">
+          <folding />
         </state>
       </provider>
     </entry>
