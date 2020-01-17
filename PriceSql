@@ -1,0 +1,16 @@
+SELECT instrument.name,
+       instr_id, 
+       max(value),   
+       max(value_d) AS date1,
+       min(provider.name),
+       max (provider_id),
+       provider.name
+  FROM INSTR_PRICE,
+       INSTRUMENT,
+       PROVIDER
+ WHERE INSTR_PRICE.instr_id = INSTRUMENT.id AND 
+       iNSTR_PRICE.provider_id = PROVIDER.id
+ GROUP BY instrument.name,
+          instr_id
+HAVING max(value_d) and max(provider_id) 
+ ORDER BY instrument.name, value_d desc
