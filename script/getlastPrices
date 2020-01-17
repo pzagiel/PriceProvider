@@ -1,12 +1,18 @@
 db="/Users/pzagiel/Dropbox/Finance Toolkit/Hello/database//FinancialWorld.db"
 db="/Users/pzagiel/Development/PriceProvider/FinancialWorld.db" 
+#currentDate=$(date +%s)
+#print $currentDate
+#mydate=$(($currentDate*1000))
+#print $mydate
+#test=$((currentDate-1000*3600*10))
+#select instr_id,max(value_d) from instr_price group by instr_id;
 cat<< EOF | sqlite3 "$db"
 .separator "\t"
 select i.code,i.name,strftime('%m-%d-%Y', value_d/1000, 'unixepoch','localtime'),value,evol,timestamp  
 from  INSTR_price p,instrument i 
 where 
 p.instr_id=i.id and value_d=(select max(value_d) 
-    from instr_price p1 where p.instr_id=p1.instr_id ) 
+    from instr_price p1 where p.instr_id=p1.instr_id) 
     order by timestamp desc; 
 EOF
 
