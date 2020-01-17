@@ -24,6 +24,7 @@ public class MorningstarProvider {
 
     public static void main(String[] args) throws IOException {
         // Date format is 2015-06-16
+         System.setProperty("https.protocols", "TLSv1.1,TLSv1.2");
         MorningstarProvider morningstarProvider = new MorningstarProvider();
         if (args.length == 3) {
             //ISIN
@@ -54,10 +55,10 @@ public class MorningstarProvider {
         for (int i = 0; i < myfunds.getFunds().size(); i++) {
             price = null;
             fund = (Instrument) myfunds.getFunds().get(i);
-            if (fund.Isin.equals("FR0007054358")) {
+            if (fund.Isin.equals("FR0010923383")) {
                 // ETF autre structure page Web
                 // cours de cloture ˆ la place de VL
-                System.out.println("Stop");
+                //System.out.println("Stop");
             }
 
             int numberOfRetry = 0;
@@ -100,7 +101,7 @@ public class MorningstarProvider {
         Elements priceElt = null;
         try {
             String ua = "Mozilla/5.0 (Macintosh)";
-            doc = Jsoup.connect(codeTitre).userAgent(ua).get();
+            doc = Jsoup.connect(codeTitre).validateTLSCertificates(true).userAgent(ua).get();
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -121,9 +122,9 @@ public class MorningstarProvider {
         Elements priceElt = null;
         Elements priceEltValue = null;
         try {
-            doc = Jsoup.connect(codeTitre).timeout(20 * 1000).get();
+            doc = Jsoup.connect(codeTitre).validateTLSCertificates(false).timeout(50 * 1000).get();
         } catch (IOException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             //System.out.println("Cannot find url: " + codeTitre);
             // Retry 5 times
             /*numberOfRetry++;
