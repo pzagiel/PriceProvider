@@ -19,8 +19,8 @@ import java.util.ArrayList;
  */
 public class StorePrice {
 
-    public void storeDebug(String name, String message) {
-        File priceFile = new File(name + ".txt");
+    public void storeDebug(String fileName, String message) {
+        File priceFile = new File(fileName + ".txt");
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(priceFile));
             writer.write(message);
