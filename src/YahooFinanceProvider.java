@@ -13,6 +13,9 @@ import java.io.IOException;
  * Time: 1:02:36 PM
  * To change this template use File | Settings | File Templates.
  */
+
+// New API
+//https://query2.finance.yahoo.com/v8/finance/chart/UMI.BR?formatted=true&crumb=oC6qFyVRUTg&lang=en-US&region=US&interval=1d&period1=1529419126&period2=1560955126&events=div%7Csplit&corsDomain=finance.yahoo.com
 public class YahooFinanceProvider {
 
 // Yahoo Quote Query
