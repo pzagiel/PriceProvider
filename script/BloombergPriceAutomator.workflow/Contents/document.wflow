@@ -97,6 +97,11 @@ https://www.bloomberg.com/markets/api/bulk-time-series/price/BABA:US?timeFrame=1
 							<string></string>
 							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/GBTPGR10:IND?timeFrame=1_MONTH</string>
 						</array>
+						<array>
+							<true/>
+							<string></string>
+							<string>https://www.bloomberg.com/quote/IFX:GR</string>
+						</array>
 					</array>
 				</dict>
 				<key>BundleIdentifier</key>
@@ -449,14 +454,14 @@ https://www.bloomberg.com/markets/api/bulk-time-series/price/BABA:US?timeFrame=1
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>73694ED6-2DA6-457C-9470-ED5741B6BE58</key>
+		<key>33660102-F927-4982-86DC-E4A866B8F6C9</key>
 		<dict>
 			<key>from</key>
 			<string>BFBB2699-61A9-4774-97BF-561264F9D26B - BFBB2699-61A9-4774-97BF-561264F9D26B</string>
 			<key>to</key>
 			<string>9DE0A698-F35B-4982-AE5D-89BD0BA9AAFB - 9DE0A698-F35B-4982-AE5D-89BD0BA9AAFB</string>
 		</dict>
-		<key>951FE37D-B12F-4E48-8BEB-95C7A6A56EBE</key>
+		<key>DA1EF43D-B676-4C35-81BB-CF49EF968CB5</key>
 		<dict>
 			<key>from</key>
 			<string>9DE0A698-F35B-4982-AE5D-89BD0BA9AAFB - 9DE0A698-F35B-4982-AE5D-89BD0BA9AAFB</string>
