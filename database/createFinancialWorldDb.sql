@@ -6,6 +6,7 @@ CREATE TABLE INSTRUMENT (
  code varchar(30) NOT NULL,
  name varchar(50) NOT NULL,
  currency char(3),
+ type varchar(30), 
  priceEvol double
 );
 
