@@ -10,6 +10,16 @@ from datetime import datetime
 # URL="https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=UMI.BR&apikey=EZ49SSU14R2EGHNS"
 
 instrList = {
+    'EXS1.DE':'EXS1.DE',
+    'GOOG':'GOOG',
+    'MSFT':'MSFT',
+    'MELI':'MELI',
+    'TNOW.MI':'TNOW.MI',
+    'SPY':'US78462F1030',
+    '0P0000SPE4.FRK':'FR0011015478',
+    'XDWT.MI':'XDWT.MI',
+    'DSY.PAR':'DSY.PAR',
+    'RACE.MI':'RACE.MI',
     'NVDA':'NVDA',
     'MDB':'MDB',
     'CSCO':'CSCO',
@@ -61,7 +71,9 @@ def getHistPrice(ticker):
     lastPrice=float(0.0)
     for priceDateString in sorted (priceData.keys()):
         priceDate = convertToDate(priceDateString)
-        if priceDate.year > 2019 :
+        #if priceDate.year > 2019 :
+        if priceDateString >= "2019-12-30" :
+    
             myPrice = Price.INSTR_PRICE(
             value_d=Price.INSTR_PRICE.convertDateToTime(priceDate),
             value=priceData[priceDateString]["4. close"],
@@ -71,7 +83,12 @@ def getHistPrice(ticker):
             if lastPrice != 0.0:
                 myPrice.evol=((float(myPrice.value)-lastPrice)/float(lastPrice))
             instrument = Price.INSTRUMENT()
-            myPrice.instr_id = instrument.getId(ticker)
+            if instrList.get(ticker) is not None:
+                myPrice.instr_id = instrument.getId(instrList.get(ticker))
+            else:
+                # if can resolve isin use ticker to find id of instrument
+                myPrice.instr_id = instrument.getId(ticker)
+            #myPrice.instr_id = instrument.getId(ticker)
             myPrice.store();
             print ticker +":"+priceDateString+ " "+str(lastPrice)+ " "+str(myPrice.evol*100)+"%"
         lastPrice=float(priceData[priceDateString]["4. close"])  
@@ -84,7 +101,7 @@ def getLastPrice(ticker):
         "apikey": "EZ49SSU14R2EGHNS",
     }
     r = requests.get("https://www.alphavantage.co/query", param)
-    # print r.text
+    #print r.text
     data = json.loads(r.text)
     try:
         if len(data["Global Quote"]) == 0:
