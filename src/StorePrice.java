@@ -68,14 +68,14 @@ public class StorePrice {
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-
+         long secSince1970=date.getTime()+3600*1000;
         // Insert Statement
         String sql = "INSERT INTO INSTR_PRICE (provider_id,instr_id,currency,value_d,value,evol) " +
                 "VALUES (" +
                 "(select id from provider where code='" + price.provider + "')," +
                 "(select id from INSTRUMENT where code='" + price.instrumentCode + "')," +
                 "'EUR'," +
-                date.getTime() + "," +
+                secSince1970+ "," +
                 price.priceValue + "," +
                 price.priceValueEvol + ")";
 
@@ -89,7 +89,7 @@ public class StorePrice {
                 sql = "UPDATE INSTR_PRICE " +
                         "SET value=" + price.priceValue + " , evol      =" + price.priceValueEvol +
                         " WHERE instr_id=(select id from INSTRUMENT where code='" + price.instrumentCode + "') AND " +
-                        "value_d=" + date.getTime() + " AND provider_id=(select id FROM PROVIDER where code='" + price.provider + "')";
+                        "value_d=" + secSince1970 + " AND provider_id=(select id FROM PROVIDER where code='" + price.provider + "')";
                 //System.out.println(sql);
 
                 try {
