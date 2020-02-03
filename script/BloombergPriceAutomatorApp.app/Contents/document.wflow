@@ -233,6 +233,11 @@
 							<string></string>
 							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/MSE:FP?timeFrame=1_MONTH</string>
 						</array>
+						<array>
+							<true/>
+							<string></string>
+							<string>https://www.bloomberg.com/markets/api/bulk-time-series/price/DAXEX:GR?timeFrame=1_MONTH</string>
+						</array>
 						
 
 
