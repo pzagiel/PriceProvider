@@ -29,6 +29,8 @@ public class BloombergProvider {
         {
 
 
+            put("TNOW:IM", "TNOW.MI");  // Lyxor MSCI Information Technology       
+            put("DAXEX:GR", "EXS1.DE");  // ISHARES DAX UCITS ETF (DE0005933931)       
             put("MSE:FP", "FR0007054358");  // Lyxor Eurostox
             put("WLN:FP", "FR0011981968");  // Atos Worldline
             put("ALGN:US", "US0162551016");  // Align Technology
