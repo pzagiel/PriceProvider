@@ -1,6 +1,7 @@
 Name,ISIN,DsId,DS
-ISHARES DAX UCITS ETF,DE0005933931,0P0000M54C,morningstar.be/be/etf
+Lyxor MSCI World Information Technology,TNOW.MI,0P0000Q1W0,morningstar.be/be/fund
 LYXOR UC ESTX50-D-EUR-ETF/DIS,FR0007054358,0P00000MRI,morningstar.be/be/fund
+ISHARES DAX UCITS ETF,DE0005933931,0P0000M54C,morningstar.be/be/etf
 Pictet - Robotics P USD,LU1279333675,F00000WFC4,morningstar.be/be/fund
 Pictet - Robotics P EUR,LU1279334210,F00000WFC3,morningstar.be/be/fund
 db Physical Gold ETC | XGLDS,GB00B5840F36,0P0000RRMP,morningstar.be/be/fund
