@@ -40,7 +40,7 @@ class INSTR_PRICE(peewee.Model) :
 		return datetime.datetime.utcfromtimestamp((self.value_d)/1000+86400) # add 86400 second to add one day	
 	def store(self):
 		try:
-			INSTR_PRICE.replace({"instr_id":self.instr_id,"value":self.value,"value_d":self.value_d,"evol":self.evol,"currency":"EUR","provider_id":8}).execute()
+			INSTR_PRICE.replace({"instr_id":self.instr_id,"value":self.value,"value_d":self.value_d,"evol":self.evol,"currency":"EUR","provider_id":self.provider_id}).execute()
 			#self.save()
 		except peewee.IntegrityError:
 			print "duplicating key need to try update"
