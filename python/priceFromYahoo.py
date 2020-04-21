@@ -30,8 +30,13 @@ import json
 import datetime
 import Price
 import sys
+import time
 
 instrList = {
+
+
+    'BRNT.MI':'DE000A1N49P6',
+    'CRUD.L':'GB00B15KXV33',
     'DSY.PA':'DSY.PAR',
     'RACE.MI':'RACE.MI',
     'NVDA':'NVDA',
@@ -69,12 +74,13 @@ instrList = {
 ticker=sys.argv[1]
 # valide range
 #max,ytd,5d,1d
-url="https://query1.finance.yahoo.com/v8/finance/chart/"+ticker+"?interval=1d&range=5d"
+url="https://query1.finance.yahoo.com/v8/finance/chart/"+ticker+"?interval=1d&range=1mo"
 print url
 r = requests.get(url)
+#print r.text
 #r=requests.get("http://www.google.com")
 data = json.loads(r.text) 
-
+#print data
 dates=data["chart"]["result"][0]["timestamp"]
 prices=[]
 for i in dates:
@@ -88,18 +94,36 @@ priceData = data["chart"]["result"][0]["indicators"]["quote"][0]["close"]
 print priceData
 count=0
 for i in priceData:
-	#print i
-    prices[count].value=round(i,4)
+    #print "prices"+str(i)
+    #prices[count].value=round(float(i),4)
+    prices[count].value=i
     count=count+1
 
+# remove null values
+for p in prices:
+    print "value:"+str(p.value)
+test = [p for p in prices if p.value is not None]
 
-#for i in prices:
-		#print str(i.value_d)+":"+str(i.value)
+test.sort(reverse=True) 
+
+for t in test:
+    # compute evol
+    print "test"+str(t.value_d)+"="+str(t.value)
+
+
+for i in prices:
+		print str(i.value_d)+":"+str(i.value)
 
 #Last Price
-print str(prices[count-1].value_d)+" : "+str(prices[count-1].value)
-priceToStore=prices[count-1]
-print priceToStore.value_d
+#print str(prices[count-1].value_d)+" : "+str(prices[count-1].value)
+print "before print t"
+for i in test:
+    print i.value
+print t
+priceToStore=test[len(test)-1]
+priceForEvol=test[len(test)-2]
+#print priceToStore.value_d
+priceToStore.evol=(priceToStore.value-priceForEvol.value)/priceForEvol.value
 priceToStore.value_d=Price.INSTR_PRICE.convertDateToTime(priceToStore.value_d)
 priceToStore.provider_id=9
 priceToStore.currency="EUR"
@@ -112,7 +136,10 @@ else:
 # if can resolve isin use ticker to find id of instrument
 	priceToStore.instr_id = instrument.getId(ticker)
 #print priceToStore.provider_id
+#print int(priceToStore.value_d)
 print int(priceToStore.value_d)
+# yahoo give epoch date in milliseconds
+print ticker+ ":"+ time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(int(priceToStore.value_d)/1000))+" "+str(priceToStore.value)+" "+str(priceToStore.evol)
 priceToStore.store()
  
 
