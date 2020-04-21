@@ -105,13 +105,14 @@ def getLastPrice(ticker):
     data = json.loads(r.text)
     try:
         if len(data["Global Quote"]) == 0:
-            print "no data for Symbol:" + ticker
-            sys.exit(0)
+            print "no data for Symbol:"
+            #sys.exit(0)
     except KeyError as e:
-        print "Invalid answer from price Provider"
+        print "Invalid answer from price Provider for ticker "
         #traceback.print_exc()
         print r.text
-        sys.exit(0)
+        return None 
+        #sys.exit(0)
         
   
     # print data["Time Series (Daily)"][1]["4. close"]
@@ -145,12 +146,14 @@ if len(sys.argv) < 2:
 
     for symbol in sorted (instrList.keys()):
         # need to ensure no more than 5 request per minute
+        #print symbol
         time.sleep(15)
         lastPrice = getLastPrice(symbol)
-        isin = instrList.get(symbol)
-        print symbol + "-" + isin + " " + lastPrice.value + " at:" + lastPrice.getDate().strftime(
+        if(lastPrice != None) :
+            isin = instrList.get(symbol)
+            print symbol + "-" + isin + " " + lastPrice.value + " at:" + lastPrice.getDate().strftime(
             '%Y-%m-%d') + " evol:" + str(lastPrice.evol * 100)
-        lastPrice.store();
+            lastPrice.store();
     sys.exit(0)
 
 if len(sys.argv) == 3:
