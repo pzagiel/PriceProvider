@@ -32,7 +32,7 @@ import Price
 import sys
 import time
 
-watchList = ["CRUD.L","MDB","ALGN","JD"]
+watchList = ["BRNT.MI","CRUD.L","MDB","ALGN","JD","INGA.AS","SBUX","PANW","PHIA.AS","STM.PA","CAP.PA","AMZN","BABA","MU"]
 
 instrList = {
 
@@ -61,8 +61,8 @@ instrList = {
     'PHIA.AS': 'NL0000009538',
     'UMI.BRU': 'BE0974320526',
     'IFX.FRK': 'DE0006231004',
-    'STM.PAR': 'NL0000226223',
-    'CAP.PAR': 'FR0000125338',
+    'STM.PA': 'NL0000226223',
+    'CAP.PA': 'FR0000125338',
     'WLN.PAR': 'FR0011981968',
     'ALGN': 'US0162551016',
     'AMZN': 'US0231351067',
