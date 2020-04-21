@@ -101,8 +101,12 @@ for w in watchList:
     count=0
     for i in priceData:
         #print "prices"+str(i)
-        #prices[count].value=round(float(i),4)
-        prices[count].value=i
+        if(i is not None):
+            prices[count].value=round(float(i),4)
+        else:
+            prices[count].value=i
+            #print round(float(i),4)
+            #prices[count].value=round(i,4)
         count=count+1
 
     # remove null values
