@@ -18,6 +18,10 @@ class INSTRUMENT(peewee.Model):
 		query = INSTRUMENT.select(INSTRUMENT.id).where(INSTRUMENT.code==code)
 		for row in query.namedtuples():
 			return row.id
+	def getName(self,code):
+		query = INSTRUMENT.select(INSTRUMENT.name).where(INSTRUMENT.code==code)
+		for row in query.namedtuples():
+			return row.name	
 
 class INSTR_PRICE(peewee.Model) :
 	id = peewee.CharField(primary_key=True) # primary key = unique id
@@ -37,6 +41,7 @@ class INSTR_PRICE(peewee.Model) :
 		database = database
 
 	def getDate(self): # return python date from unix time in millisecond
+		# I don't know why utcfromtimestamp  function didn't return the right date and we need to add one day
 		return datetime.datetime.utcfromtimestamp((self.value_d)/1000+86400) # add 86400 second to add one day	
 	def store(self):
 		try:
@@ -68,6 +73,7 @@ class POSITION(peewee.Model):
 		query = INSTRUMENT.select(INSTRUMENT.id).where(INSTRUMENT.code==code)
 		for row in query.namedtuples():
 			return row.id
+
 positions=[] 
 positions.append(POSITION(portfolio="24822",quantity_n=5,instr_id=POSITION.getId("FR0011015478"),cost_price_n=63378.95,date_d=0))
 positions.append(POSITION(portfolio="24822",quantity_n=910,instr_id=POSITION.getId("LU0070992663"),cost_price_n=52.5,date_d=0))
