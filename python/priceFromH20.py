@@ -21,4 +21,4 @@ for isin in funds:
 	                instr_id=instrument.getId(isin)
 	                )
 	myPrice.store()
-	print isin+" "+time.strftime('%d-%m-%Y',time.localtime(long(myPrice.value_d/1000)))+ " "+str(myPrice.value)+" "+str(round(myPrice.evol,4)*100)+"%"
+	print instrument.getName(isin)+" "+time.strftime('%d-%m-%Y',time.localtime(long(myPrice.value_d/1000)))+ " "+str(myPrice.value)+" "+str(round(myPrice.evol,4)*100)+"%"
