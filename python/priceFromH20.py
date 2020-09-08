@@ -21,4 +21,7 @@ for isin in funds:
 	                instr_id=instrument.getId(isin)
 	                )
 	myPrice.store()
+	#Copy estimation for  Morningstar provider
+	myPrice.provider_id=1
+	myPrice.store()
 	print instrument.getName(isin)+" "+time.strftime('%d-%m-%Y',time.localtime(long(myPrice.value_d/1000)))+ " "+str(myPrice.value)+" "+str(round(myPrice.evol,4)*100)+"%"
