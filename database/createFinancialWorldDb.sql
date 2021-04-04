@@ -41,5 +41,6 @@ CREATE TABLE POSITION (
  portfolio varchar(30) NOT NULL,
  instr_id BIGINT NOT NULL,
  quantity_n DOUBLE NOT NULL,
+ open_d INTEGER NOT NULL,
  FOREIGN KEY(instr_id) REFERENCES INSTRUMENT(id)
 );
