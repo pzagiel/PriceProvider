@@ -32,11 +32,16 @@ import Price
 import sys
 import time
 
-watchList = ["BRNT.MI","CRUD.L","MDB","ALGN","JD","INGA.AS","SBUX","PANW","PHIA.AS","STM.PA","CAP.PA","AMZN","BABA","MU"]
+watchList = ["PANW","BRNT.MI","CRUD.L","MDB","ALGN","JD","INGA.AS","SBUX",  
+                "PHIA.AS","STM.PA","CAP.PA","AMZN","BABA","AHLA.DE","9988.HK","MU","NFLX","^BFX",
+                "AIR.PA","XIOR.BR","LIN.DE","TSM","^NDX","ENPH","ADYEN.AS","SNOW",
+                "MAXR","SQ","^GSPC","SE","^STOXX50E","EXS1.DE","ARKK","NET","MRNA","WIX","DIM.PA",
+                "EURUSD=X","LOTB.BR","ICLN","TEMN.SW","SIE.DE","^SOX","^HSI","000001.SS","NIO",
+                "BYDDF","PRX.AS","ARCT","CRSP","PLTR"]
 
 instrList = {
-
-
+    'AIR.PA':'AIR.PA',
+    '^BFX':'BEL20',
     'BRNT.MI':'DE000A1N49P6',
     'CRUD.L':'GB00B15KXV33',
     'DSY.PA':'DSY.PAR',
@@ -70,21 +75,50 @@ instrList = {
     '9988.HK': '9988.HK',
     'MU': 'US5951121038',
     'JD': 'US47215P1066',
-    'EL.PAR': 'FR0000121667'
+    'EL.PAR': 'FR0000121667',
+    'XIOR.BR': 'XIOR.BRU',
+    'LIN.DE': 'LIN.DE',
+    'TSM':'TSM',
+    '^NDX':'^NDX',
+    'ENPH':'ENPH',
+    'ADYEN.AS':'ADYEN.AMS',
+    'SNOW':'SNOW',
+    '^GSPC':'SPX',
+    '^STOXX50E':'SX5E',
+    'MRNA':'MRNA'
+
 }
+
+# Code below to get all instruments in database for Patrick Joly
+#finInstr = Price.INSTRUMENT()
+#watchList=finInstr.getAllInstruments()
+
+
 if (len(sys.argv)==2):
     watchList=[sys.argv[1]]
-for w in watchList:
+
+headers = {
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
+
+
+
+for ticker in watchList:
+    #time.sleep(5)
     #print w
     #ticker=sys.argv[1]
-    ticker=w
+    #ticker=w
     # valide range
     #max,ytd,5d,1d
     url="https://query1.finance.yahoo.com/v8/finance/chart/"+ticker+"?interval=1d&range=1mo"
-    #print url
-    r = requests.get(url)
-    #print r.text
-    #r=requests.get("http://www.google.com")
+    try:
+        r = requests.get(url,headers=headers)     
+    except requests.exceptions.SSLError as e:
+        print "error getting price for: "+ticker
+        print e
+        continue
+        #print r.text
+        #print url
+        #print r.content  
     data = json.loads(r.text) 
     #print data
     dates=data["chart"]["result"][0]["timestamp"]
@@ -112,6 +146,7 @@ for w in watchList:
     # remove null values
     #for p in prices:
         #print "value:"+str(p.value)
+    # filter data by removing None (empty data)
     test = [p for p in prices if p.value is not None]
     test.sort(key=lambda x: x.value_d)
     #test.sort(reverse=True) 
@@ -149,8 +184,9 @@ for w in watchList:
     #print int(priceToStore.value_d)
     #print int(priceToStore.value_d)
     # yahoo give epoch date in milliseconds
-    print ticker+ ":"+ time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(int(priceToStore.value_d)/1000))+" "+str(priceToStore.value)+" "+str(priceToStore.evol*100)+"%"
+    print ticker+ ":"+ time.strftime('%d-%m-%Y',time.localtime(int(priceToStore.value_d)/1000))+" "+str(priceToStore.value)+" "+str(round(priceToStore.evol,4)*100)+"%"
     priceToStore.store()
+    #time.sleep(5)
  
 
 

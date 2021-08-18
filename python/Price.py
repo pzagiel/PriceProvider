@@ -22,6 +22,13 @@ class INSTRUMENT(peewee.Model):
 		query = INSTRUMENT.select(INSTRUMENT.name).where(INSTRUMENT.code==code)
 		for row in query.namedtuples():
 			return row.name	
+	def getAllInstruments(self):
+		instruments=[]
+		for instrument in INSTRUMENT.select().where(INSTRUMENT.code.endswith('.PA')):
+			instruments.append(instrument.code)
+			#print(instrument.name)    		
+    		#print(instruments)
+    		return instruments
 
 class INSTR_PRICE(peewee.Model) :
 	id = peewee.CharField(primary_key=True) # primary key = unique id
@@ -48,7 +55,8 @@ class INSTR_PRICE(peewee.Model) :
 			INSTR_PRICE.replace({"instr_id":self.instr_id,"value":self.value,"value_d":self.value_d,"evol":self.evol,"currency":"EUR","provider_id":self.provider_id}).execute()
 			#self.save()
 		except peewee.IntegrityError:
-			print "duplicating key need to try update"
+			print "duplicating key need to try update or Instrument didn't exist in Database"
+
 
 	@staticmethod	
 	def convertDateToTime(mydate):
