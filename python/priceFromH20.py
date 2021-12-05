@@ -12,10 +12,6 @@ for isin in funds:
 	url="http://www.h2o-am.com/wp-content/themes/amarou/hs/get_json.php?isin="+isin
 	#print url
 	r = requests.get(url)
-	# trick to avoid bug in first element making json parsing fail
-	# replace 0000 by 0
-	# Not necessary anymore bug corrected, JSON data OK
-	#data = json.loads(r.text.replace('[0000,','[0,'))
 	data = json.loads(r.text) 
 	instrument = Price.INSTRUMENT()	
 	priceNumber=len(data)-1 # last element
